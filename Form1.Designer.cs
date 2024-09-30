@@ -33,16 +33,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.textSourceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.parentSourceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textSourceBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.parentSourceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.textSourceBindingSource, "Text", true));
             this.textBox1.Location = new System.Drawing.Point(25, 33);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(229, 20);
@@ -69,15 +64,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            this.errorProvider1.DataSource = this.textSourceBindingSource;
-            // 
-            // textSourceBindingSource
-            // 
-            this.textSourceBindingSource.DataSource = typeof(BindingDemo.TextSource);
-            // 
-            // parentSourceBindingSource
-            // 
-            this.parentSourceBindingSource.DataSource = typeof(BindingDemo.ParentSource);
             // 
             // Form1
             // 
@@ -90,8 +76,6 @@
             this.Name = "Form1";
             this.Text = "How to binding";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textSourceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.parentSourceBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,11 +84,9 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.BindingSource textSourceBindingSource;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.BindingSource parentSourceBindingSource;
     }
 }
 

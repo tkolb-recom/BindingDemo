@@ -1,25 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BindingDemo
 {
     public partial class Form1 : Form
     {
+        private readonly TextSource _sourceInstance;
+
         public Form1()
         {
             InitializeComponent();
 
-            var ps = new ParentSource();
-            ps.PropertyChanged += PropertyChangedHandler;
-            ps.Nested.PropertyChanged += PropertyChangedHandler;
-            textSourceBindingSource.DataSource = ps.Nested;
+            _sourceInstance = new TextSource();
+            _sourceInstance.PropertyChanged += PropertyChangedHandler;
+            
+            textBox1.BindTo(_sourceInstance, box => box.Text, source => source.Text);
+            //, dataSourceUpdateMode: DataSourceUpdateMode.OnValidation
+
+            errorProvider1.DataSource = _sourceInstance;
         }
 
         private void PropertyChangedHandler(object sender, PropertyChangedEventArgs e)
@@ -29,8 +28,7 @@ namespace BindingDemo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string text = ((TextSource)textSourceBindingSource.DataSource).Text;
-            MessageBox.Show(text);
+            MessageBox.Show(_sourceInstance.Text);
         }
     }
 }
