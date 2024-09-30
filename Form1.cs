@@ -6,19 +6,20 @@ namespace BindingDemo
 {
     public partial class Form1 : Form
     {
-        private readonly TextSource _sourceInstance;
+        private readonly ParentSource _sourceInstance;
 
         public Form1()
         {
             InitializeComponent();
 
-            _sourceInstance = new TextSource();
+            _sourceInstance = new ParentSource();
             _sourceInstance.PropertyChanged += PropertyChangedHandler;
-            
-            textBox1.BindTo(_sourceInstance, box => box.Text, source => source.Text);
+            _sourceInstance.Nested.PropertyChanged += PropertyChangedHandler;
+
+            textBox1.BindTo(_sourceInstance.Nested, box => box.Text, source => source.Text);
             //, dataSourceUpdateMode: DataSourceUpdateMode.OnValidation
 
-            errorProvider1.DataSource = _sourceInstance;
+            errorProvider1.DataSource = _sourceInstance.Nested;
         }
 
         private void PropertyChangedHandler(object sender, PropertyChangedEventArgs e)
@@ -28,7 +29,7 @@ namespace BindingDemo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(_sourceInstance.Text);
+            MessageBox.Show(_sourceInstance.Nested.Text);
         }
     }
 }
