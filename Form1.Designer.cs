@@ -34,8 +34,10 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.textSourceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.parentSourceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textSourceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parentSourceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -73,6 +75,10 @@
             // 
             this.textSourceBindingSource.DataSource = typeof(BindingDemo.TextSource);
             // 
+            // parentSourceBindingSource
+            // 
+            this.parentSourceBindingSource.DataSource = typeof(BindingDemo.ParentSource);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -85,6 +91,7 @@
             this.Text = "How to binding";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textSourceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parentSourceBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,6 +104,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.BindingSource parentSourceBindingSource;
     }
 }
 

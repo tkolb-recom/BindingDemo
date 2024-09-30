@@ -16,14 +16,15 @@ namespace BindingDemo
         {
             InitializeComponent();
 
-            var ts = new TextSource();
-            ts.PropertyChanged += Ts_PropertyChanged;
-            textSourceBindingSource.DataSource = ts;
+            var ps = new ParentSource();
+            ps.PropertyChanged += PropertyChangedHandler;
+            ps.Nested.PropertyChanged += PropertyChangedHandler;
+            textSourceBindingSource.DataSource = ps.Nested;
         }
 
-        private void Ts_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void PropertyChangedHandler(object sender, PropertyChangedEventArgs e)
         {
-            listBox1.Items.Add($"{DateTime.Now.ToLongTimeString()} {e.PropertyName}");
+            listBox1.Items.Add($"{DateTime.Now.ToLongTimeString()} {sender.GetType().Name}.{e.PropertyName}");
         }
 
         private void button1_Click(object sender, EventArgs e)
